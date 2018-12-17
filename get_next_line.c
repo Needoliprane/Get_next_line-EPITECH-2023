@@ -13,9 +13,9 @@
 #include <unistd.h>
 #include <stdbool.h>
 
-#define SIZE 1
+#define SIZE 10
 
-unsigned int my_strlen(char const *str)
+unsigned int my_len(char const *str)
 {
     unsigned int i = 0;
 
@@ -25,7 +25,7 @@ unsigned int my_strlen(char const *str)
     return (i);
 }
 
-bool find_char(char const *str, char c)
+bool find_char(char const *str, char const c)
 {
     for (unsigned int i = 0; str && str[i]; i++) {
         if (c == str[i])
@@ -36,21 +36,19 @@ bool find_char(char const *str, char c)
 
 char *my_starcat_gnl(char *s1, char *s2, unsigned int *i, int fd)
 {
-    char *tmp = malloc(sizeof(char) * (my_strlen(s1) + my_strlen(s2 + *i) + 1));
+    char *tmp = malloc(sizeof(char) * (my_len(s1) + my_len(s2 + *i) + 1));
     unsigned int copy = 0;
 
     if (tmp != NULL)
-        tmp[my_strlen(s1) + my_strlen(s2 + *i)] = tmp[0] = '\0';
+        tmp[my_len(s1) + my_len(s2 + *i)] = tmp[0] = '\0';
     for (int j = 0; s1 && tmp && s1[j]; j++, copy++)
         tmp[copy] = s1[j];
     for (; s2 && tmp && s2[*i] != '\0' && s2[*i] != '\n'; *i += 1, copy++)
         tmp[copy] = s2[*i];
     tmp[copy] = '\0';
     *i = (s2[*i] == '\0') ? 0 : *i + 1;
-    for (unsigned int k = 0; s2 && s2[k] && s1 && s1[k] && k <= SIZE; k++) {
-        if (fd == 0)
-            s2[k] = '\0';
-        s1[k] = '\0';
+    for (unsigned int k = 0; s2 && s1 && k <= SIZE; k++) {
+        (fd == 0) ? (s2[k] = '\0'), (s1[k] = '\0') : (s1[k] = '\0');
     }
     free(s1);
     return (tmp);
