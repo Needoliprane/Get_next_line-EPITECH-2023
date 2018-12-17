@@ -13,7 +13,7 @@
 #include <unistd.h>
 #include <stdbool.h>
 
-#define SIZE 10
+#define SIZE 1
 
 unsigned int my_len(char const *str)
 {
