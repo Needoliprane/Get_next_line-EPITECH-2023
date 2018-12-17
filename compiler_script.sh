@@ -8,9 +8,9 @@ read_fd usage : ./read_fd file
 
 "
 
-gcc -Wall -Wextra -Werror get_next_line.c main_read_standart_input.c -o read_standart_input -g3 
+gcc -Wall -Wextra -Werror get_next_line.c main_read_standard_input.c -o read_standard_input -g3 
 
-echo "read_standart_input usage : ./read_standart_input
+echo "read_standard_input usage : ./read_standard_input
 Then write whatever you want, and press enter.
 To stop Ctrl + c
 "
