@@ -16,8 +16,6 @@ unsigned int my_len(char const *str)
 {
     unsigned int i = 0;
 
-    if (str == NULL || str[0] == '\0')
-        return (0);
     for (; str && str[i]; i++);
     return (i);
 }
@@ -57,13 +55,13 @@ char *my_starcat_gnl(char *tmp_ret, char *buf, unsigned int *i, int fd)
 char *one_read(char *buf)
 {
     char *tmp = malloc(sizeof(char) * (my_len(buf) + 1));
+    int i = 0;
 
     if (tmp == NULL)
         return (NULL);
-    for (int i = 0;buf && buf[i]; i++) {
+    for (;buf && buf[i]; i++)
         tmp[i] = buf[i];
-        tmp[i + 1] = '\0';
-    }
+    tmp[i] = '\0';
     for (int i = 0; i <= READ_SIZE; i++)
         buf[i] = '\0';
     return (tmp);
