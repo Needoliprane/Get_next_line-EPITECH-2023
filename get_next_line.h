@@ -15,7 +15,7 @@ char *get_next_line(int fd);
 /* Define */
 
 #ifndef READ_SIZE
-#   define READ_SIZE 128
-# endif /* ! READ_SIZE */
+#define READ_SIZE 16
+#endif /* ! READ_SIZE */
 
 #endif /* !GET_NEXT_LINE_H_ */

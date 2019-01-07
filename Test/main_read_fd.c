@@ -36,6 +36,8 @@ int main(int ac, char **av)
     for (char *tmp = NULL; (tmp = get_next_line(fd)) != NULL;) {
         if (tmp != NULL && tmp[0] != '\0') {
             printf("%s\n", tmp);
+            free(tmp);
+            tmp = NULL;
         } else {
             printf("NULL\n");
         }

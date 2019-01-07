@@ -44,8 +44,8 @@ char *my_starcat_gnl(char *tmp_ret, char *buf, unsigned int *i, int fd)
         tmp[cpy] = buf[*i];
     tmp[cpy] = '\0';
     *i = (buf[*i] == '\0' || buf[*i] == EOF) ? 0 : *i + 1;
-    for (unsigned int k = 0; buf && tmp_ret && k < READ_SIZE; k++) {
-        (fd == 0) ? (buf[k] = '\0'), (tmp_ret[k] = '\0') : (tmp_ret[k] = '\0');
+    for (unsigned int k = 0; buf && tmp_ret && k + 1 < READ_SIZE; k++) {
+        (fd == 0) ? (buf[k] = '\0') : 0;
     }
     free(tmp_ret);
     tmp_ret = NULL;
@@ -59,7 +59,7 @@ char *one_read(char *buf)
 
     if (tmp == NULL)
         return (NULL);
-    for (;buf && buf[i]; i++)
+    for (; buf && buf[i]; i++)
         tmp[i] = buf[i];
     tmp[i] = '\0';
     for (int i = 0; i <= READ_SIZE; i++)
